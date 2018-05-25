@@ -1,0 +1,24 @@
+{
+  "name": "@gradealabs/with-get-initial-props",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "prepublish": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "Darren Schnare <dschnare@gradealabs.com>",
+  "license": "BSD",
+  "devDependencies": {
+    "@types/react": "^16.3.14",
+    "typescript": "^2.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.4.0"
+  }
+}
