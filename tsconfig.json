@@ -6,9 +6,11 @@
     "jsx": "react",
     "outDir": "lib",
     "declaration": true,
-    "declarationDir": ".",
     "lib": [
       "es2015"
     ]
-  }
+  },
+  "include": [
+    "index.tsx"
+  ]
 }

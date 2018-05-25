@@ -6,7 +6,7 @@ props.
 ## Install
 
 ```
-npm install react gradealabs/with-get-initial-props#0.0.1 --save
+npm install react gradealabs/with-get-initial-props#0.0.2 --save
 ```
 
 ## Quick Start

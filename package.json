@@ -1,8 +1,9 @@
 {
   "name": "@gradealabs/with-get-initial-props",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React HOC for Nextjs that wraps a series of functions that provide initial props",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
