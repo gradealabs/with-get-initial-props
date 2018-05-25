@@ -12,10 +12,9 @@ export interface InitialPropsContext {
 }
 
 /**
- * Runs a sequence of functions in the context of a `getInitialProps` context
+ * Runs a sequence of functions in the context of a `getInitialProps` call
  * for a Nextjs page. Each function will receive all the properties a typical
- * context from Nextjs has and a new property called `props` that will be equal
- * to the properties from the previous function in the chain.
+ * context from Nextjs has.
  *
  * Supports asynchronous functions that return a Promise that resolves to an
  * object with props for the component.
@@ -23,9 +22,9 @@ export interface InitialPropsContext {
  * @example
  * const MyComponent = withGetInitialProps(
  *  ({ req }) => ({ user: req.user }),
- *  ({ props }) => ({ email: props.user.email })
+ *  ({ req }) => ({ referer: req.headers['referer'] })
  * )(props => {
- *  return (<p>User email is: {props.email}.</p>)
+ *  return (<p>User email is: {props.email}. Referer is {props.referer}</p>)
  * })
  * @param fns The functions to run the initial props context on to produce props
  */
@@ -35,7 +34,9 @@ export function withGetInitialProps (...fns: Array<(ctx: InitialPropsContext) =>
     Wrapper['getInitialProps'] = (ctx) => {
       return fns.reduce((p, fn) => {
         return p.then(props => {
-          return fn(Object.assign({}, ctx, { props }))
+          return Promise.resolve(fn(ctx)).then(p => {
+            return Object.assign(props, p)
+          })
         })
       }, Promise.resolve({}))
     }
